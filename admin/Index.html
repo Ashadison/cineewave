@@ -7,6 +7,29 @@
   </head>
   <body>
     <!-- Netlify CMS will mount here -->
+    
+    <!-- Load Netlify CMS -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    
+    <!-- Load Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+      // Initialize Netlify Identity
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.init();
+        
+        // Optional: redirect to /admin/ after login
+        window.netlifyIdentity.on("login", user => {
+          document.location.href = "/admin/";
+        });
+
+        // Optional: auto-open the login modal if not logged in
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.open(); // opens login modal automatically
+          }
+        });
+      }
+    </script>
   </body>
 </html>
