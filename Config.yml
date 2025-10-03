@@ -1,0 +1,24 @@
+backend:
+  name: git-gateway
+  branch: main        # or master if your default branch is master
+
+media_folder: "assets/images"        # where uploaded images will be saved in the repo
+public_folder: "/assets/images"      # how images are referenced in the site
+
+publish_mode: editorial_workflow     # optional: use editorial workflow (optional)
+
+collections:
+  - name: "movies"
+    label: "Movies"
+    folder: "content/movies"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", required: false }
+      - { label: "Year", name: "year", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["Action","Comedy","Drama","Horror","Romance","Sci-Fi","Documentary","Other"] }
+      - { label: "Poster", name: "poster", widget: "image" }
+      - { label: "Download Link", name: "download_link", widget: "string" }
+      - { label: "Trailer Link (optional)", name: "trailer", widget: "string", required: false }
+      - { label: "Description", name: "body", widget: "markdown" }
